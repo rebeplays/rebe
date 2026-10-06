@@ -259,7 +259,9 @@
         #0c0c0d;
       color:#34343a;font-family:Rajdhani,sans-serif;font-size:4.2rem;font-weight:700;letter-spacing:-.06em;
     }
-    .card-visual img:not([src=""])+.placeholder{opacity:0}
+    .card-visual .placeholder{transition:opacity .25s ease}
+    .card-visual.image-loaded .placeholder{opacity:0}
+    .card-visual.image-loaded img{opacity:.8}
 
     .card-body{padding:19px 18px 20px;position:relative;z-index:4}
     .weapon-class{font-size:.59rem;color:#66666d;letter-spacing:.17em;text-transform:uppercase;margin-bottom:8px}
@@ -301,9 +303,11 @@
 
     .drawer-content{padding:24px}
     .drawer-shot{position:relative;border:1px solid var(--line);border-radius:24px;overflow:hidden;aspect-ratio:16/10;background:#0a0a0b}
-    .drawer-shot img{width:100%;height:100%;object-fit:contain;background:#060606;display:block}
+    .drawer-shot img{width:100%;height:100%;object-fit:contain;background:#060606;display:block;opacity:0;transition:opacity .28s ease}
     .drawer-shot .placeholder{font-size:7rem}
-    .drawer-shot img:not([src=""])+.placeholder{opacity:0}
+    .drawer-shot .placeholder{transition:opacity .25s ease}
+    .drawer-shot.image-loaded img{opacity:1}
+    .drawer-shot.image-loaded .placeholder{opacity:0}
     .drawer-number{position:absolute;top:18px;left:18px;z-index:3;font-family:Rajdhani,sans-serif;font-size:1rem;font-weight:700;letter-spacing:.12em;background:rgba(0,0,0,.72);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:8px 12px;color:#fff;backdrop-filter:blur(8px)}
 
     .drawer-title-row{display:flex;justify-content:space-between;align-items:end;gap:18px;padding:24px 2px 17px;border-bottom:1px solid var(--line)}
@@ -736,9 +740,9 @@
     </div>
 
     <div class="drawer-content">
-      <div class="drawer-shot">
+      <div class="drawer-shot" id="drawerShot">
         <span class="drawer-number" id="drawerNumber">01</span>
-        <img id="drawerImage" src="" alt="" />
+        <img id="drawerImage" src="" alt="" referrerpolicy="no-referrer" decoding="async" />
         <div class="placeholder" id="drawerPlaceholder">RB</div>
       </div>
 
@@ -766,6 +770,8 @@
        Add up to 20 guns only. Anything after entry #20 is ignored by the UI.
        Replace image: "" with your own Imgur/CDN image links.
        thumb can be a smaller image for faster card loading.
+       SLOT 01–05 are TEXT ONLY. Edit the 5 strings inside attachments: [ ... ].
+       You can use either a full URL (Imgur/CDN) or a local path like images/grau.webp.
        ========================================================= */
 
     const weapons = [
@@ -866,6 +872,7 @@
     const drawerBackdrop = document.getElementById("drawerBackdrop");
     const drawerClose = document.getElementById("drawerClose");
     const drawerImage = document.getElementById("drawerImage");
+    const drawerShot = document.getElementById("drawerShot");
     const drawerNumber = document.getElementById("drawerNumber");
     const drawerClass = document.getElementById("drawerClass");
     const drawerTitle = document.getElementById("drawerTitle");
@@ -922,7 +929,7 @@
             <span class="card-index">${String(w.index+1).padStart(2,"0")}</span>
             <span class="card-tag">${escapeHTML(w.classLabel)}</span>
             <div class="card-visual">
-              ${src ? `<img src="${escapeHTML(src)}" alt="${escapeHTML(w.name)} loadout" loading="${position < 4 ? "eager" : "lazy"}" decoding="async" fetchpriority="${position < 2 ? "high" : "auto"}">` : `<img src="" alt="">`}
+              ${src ? `<img src="${escapeHTML(src)}" alt="${escapeHTML(w.name)} loadout" loading="${position < 4 ? "eager" : "lazy"}" decoding="async" fetchpriority="${position < 2 ? "high" : "auto"}" referrerpolicy="no-referrer">` : `<img src="" alt="">`}
               <div class="placeholder">${escapeHTML(w.name.replace(/[^A-Z0-9]/gi,"").slice(0,3).toUpperCase())}</div>
             </div>
             <div class="card-body">
@@ -938,6 +945,24 @@
     }
 
     function attachCardEvents(){
+      // Only hide a card placeholder after the image REALLY loads.
+      document.querySelectorAll(".card-visual").forEach(visual => {
+        const img = visual.querySelector("img");
+        if(!img || !img.getAttribute("src")) return;
+
+        const markLoaded = () => {
+          if(img.naturalWidth > 0) visual.classList.add("image-loaded");
+        };
+        const markFailed = () => {
+          visual.classList.remove("image-loaded");
+          img.style.opacity = "0";
+        };
+
+        img.addEventListener("load", markLoaded, {once:true});
+        img.addEventListener("error", markFailed, {once:true});
+        if(img.complete) markLoaded();
+      });
+
       document.querySelectorAll(".vault-card").forEach(card => {
         const idx = Number(card.dataset.index);
         card.addEventListener("click",()=>openDrawer(idx));
@@ -961,15 +986,42 @@
       drawerCode.textContent = `BUILD // ${w.code}`;
       drawerPlaceholder.textContent = w.name.replace(/[^A-Z0-9]/gi,"").slice(0,3).toUpperCase();
 
-      if(w.image){
-        drawerImage.src = w.image;
-        drawerImage.alt = `${w.name} loadout`;
-      }else{
-        drawerImage.removeAttribute("src");
-        drawerImage.alt = "";
-      }
+      // Dossier image loader: full image first, thumbnail second.
+      // Placeholder stays visible until an image has successfully loaded.
+      drawerShot.classList.remove("image-loaded");
+      drawerImage.style.opacity = "0";
+      drawerImage.removeAttribute("src");
+      drawerImage.alt = "";
 
-      attachmentGrid.innerHTML = w.attachments.map((a,i)=>`<div class="attachment"><small>Slot ${String(i+1).padStart(2,"0")}</small><b>${escapeHTML(a)}</b></div>`).join("");
+      const imageCandidates = [...new Set([w.image, w.thumb].filter(Boolean))];
+      let imageAttempt = 0;
+
+      const tryDossierImage = () => {
+        if(imageAttempt >= imageCandidates.length){
+          drawerShot.classList.remove("image-loaded");
+          drawerImage.removeAttribute("src");
+          drawerImage.alt = "";
+          return;
+        }
+
+        const nextSrc = imageCandidates[imageAttempt++];
+        drawerImage.onload = () => {
+          drawerShot.classList.add("image-loaded");
+          drawerImage.style.opacity = "1";
+        };
+        drawerImage.onerror = () => {
+          drawerShot.classList.remove("image-loaded");
+          drawerImage.style.opacity = "0";
+          tryDossierImage();
+        };
+        drawerImage.alt = `${w.name} loadout`;
+        drawerImage.src = nextSrc;
+      };
+
+      tryDossierImage();
+
+      // SLOT 01–05: TEXT ONLY.
+      attachmentGrid.innerHTML = w.attachments.slice(0,5).map((text,i)=>`<div class="attachment"><small>Slot ${String(i+1).padStart(2,"0")}</small><b>${escapeHTML(String(text))}</b></div>`).join("");
 
       copyBtn.textContent = "Copy build code";
       drawer.classList.add("open");
