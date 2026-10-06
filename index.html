@@ -778,80 +778,194 @@
 
     const weapons = [
       {
-        name: "M13", category: "ar", classLabel: "Assault Rifle", image: "", thumb: "", code: "REBE-M13-01",
-        attachments: ["RTC Heavy Long Barrel","OWC Laser - Tactical","No Stock","Granulated Grip Tape","Extended Mag B"]
+        name: "ASM10", category: "ar", classLabel: "Assault Rifle", image: "https://i.imgur.com/zphp0sP.jpeg", thumb: "https://i.imgur.com/zphp0sP.jpeg", code: "REBE-ASM10-01",
+        attachments: [
+          { label: "Muzzle", value: "Edit attachment" },
+          { label: "Barrel", value: "Edit attachment" },
+          { label: "Stock", value: "Edit attachment" },
+          { label: "Ammunition", value: "Edit attachment" },
+          { label: "Rear Grip", value: "Edit attachment" }
+        ]
       },
       {
-        name: "KRM-262", category: "shotgun", classLabel: "Shotgun", image: "", thumb: "", code: "REBE-KRM-02",
-        attachments: ["MIP Laser 5mW","RTC Extended Light Barrel","No Stock","Stippled Grip Tape","Speed Up Kill"]
+        name: "BAL27", category: "ar", classLabel: "Assault Rifle", image: "https://i.imgur.com/0qXyWtY.jpeg", thumb: "https://i.imgur.com/0qXyWtY.jpeg", code: "REBE-BAL27-02",
+        attachments: [
+          { label: "Muzzle", value: "Edit attachment" },
+          { label: "Barrel", value: "Edit attachment" },
+          { label: "Stock", value: "Edit attachment" },
+          { label: "Ammunition", value: "Edit attachment" },
+          { label: "Rear Grip", value: "Edit attachment" }
+        ]
       },
       {
-        name: "USS 9", category: "smg", classLabel: "Submachine Gun", image: "", thumb: "", code: "REBE-USS9-03",
-        attachments: ["Monolithic Suppressor","OWC Laser - Tactical","No Stock","Extended Mag A","Granulated Grip Tape"]
+        name: "BK57", category: "ar", classLabel: "Assault Rifle", image: "https://i.imgur.com/K78yPmP.jpeg", thumb: "https://i.imgur.com/K78yPmP.jpeg", code: "REBE-BK57-03",
+        attachments: [
+          { label: "Muzzle", value: "Edit attachment" },
+          { label: "Barrel", value: "Edit attachment" },
+          { label: "Stock", value: "Edit attachment" },
+          { label: "Ammunition", value: "Edit attachment" },
+          { label: "Rear Grip", value: "Edit attachment" }
+        ]
       },
       {
-        name: "DL Q33", category: "sniper", classLabel: "Sniper Rifle", image: "", thumb: "", code: "REBE-DLQ-04",
-        attachments: ["MIP Light Barrel","OWC Skeleton Stock","OWC Laser - Tactical","Extended Mag A","Stippled Grip Tape"]
+        name: "BP50", category: "ar", classLabel: "Assault Rifle", image: "https://i.imgur.com/CNAj5vM.jpeg", thumb: "https://i.imgur.com/CNAj5vM.jpeg", code: "REBE-BP50-04",
+        attachments: [
+          { label: "Muzzle", value: "Add your muzzle" },
+          { label: "Barrel", value: "Add your barrel" },
+          { label: "Stock", value: "Add your stock" },
+          { label: "Ammunition", value: "Add your magazine" },
+          { label: "Rear Grip", value: "Add your grip" }
+        ]
       },
       {
-        name: "GRAU 5.56", category: "ar", classLabel: "Assault Rifle", image: "https://i.imgur.com/6sWxkES.jpeg", thumb: "https://i.imgur.com/6sWxkES.jpeg", code: "REBE-GRAU-05",
-        attachments: ["Tempus 26.4 Archangel","Cronen Sniper Elite","OWC Laser - Tactical","50 Round Mags","Granulated Grip Tape"]
+        name: "CHOPPER", category: "lmg", classLabel: "Light Machine Gun", image: "https://i.imgur.com/eVfImfg.jpeg", thumb: "https://i.imgur.com/eVfImfg.jpeg", code: "REBE-CHOPPER-05",
+        attachments: [
+          { label: "Muzzle", value: "Edit attachment" },
+          { label: "Barrel", value: "Edit attachment" },
+          { label: "Underbarrel", value: "Edit attachment" },
+          { label: "Ammunition", value: "Edit attachment" },
+          { label: "Rear Grip", value: "Edit attachment" }
+        ]
       },
       {
-        name: "CHOPPER", category: "lmg", classLabel: "Light Machine Gun", image: "", thumb: "", code: "REBE-CHOP-06",
-        attachments: ["Heavy Handle","OWC Laser - Tactical","Monolithic Suppressor","Granulated Grip Tape","Tactical Foregrip A"]
+        name: "DLQ33", category: "sniper", classLabel: "Sniper Rifle", image: "https://i.imgur.com/FKFx933.jpeg", thumb: "https://i.imgur.com/FKFx933.jpeg", code: "REBE-DLQ33-06",
+        attachments: [
+          { label: "Barrel", value: "MIP Light Barrel" },
+          { label: "Stock", value: "OWC Skeleton Stock" },
+          { label: "Laser", value: "OWC Laser - Tactical" },
+          { label: "Ammunition", value: "Extended Mag A" },
+          { label: "Rear Grip", value: "Stippled Grip Tape" }
+        ]
       },
       {
-        name: "CX-9", category: "smg", classLabel: "Submachine Gun", image: "", thumb: "", code: "REBE-CX9-07",
-        attachments: ["CX-38S","CX-FR","OWC Laser - Tactical","50 Round Drums","Granulated Grip Tape"]
+        name: "DRH", category: "ar", classLabel: "Assault Rifle", image: "https://i.imgur.com/7xGGRhl.jpeg", thumb: "https://i.imgur.com/7xGGRhl.jpeg", code: "REBE-DRH-07",
+        attachments: [
+          { label: "Muzzle", value: "Edit attachment" },
+          { label: "Barrel", value: "Edit attachment" },
+          { label: "Stock", value: "Edit attachment" },
+          { label: "Ammunition", value: "Edit attachment" },
+          { label: "Rear Grip", value: "Edit attachment" }
+        ]
       },
       {
-        name: "LOCUS", category: "sniper", classLabel: "Sniper Rifle", image: "", thumb: "", code: "REBE-LOCUS-08",
-        attachments: ["YKM Lightweight Short","OWC Skeleton Stock","OWC Laser - Tactical","Stopping Power Reload","Stippled Grip Tape"]
+        name: "HOLGER26", category: "lmg", classLabel: "Light Machine Gun", image: "https://i.imgur.com/xHby7KA.jpeg", thumb: "https://i.imgur.com/xHby7KA.jpeg", code: "REBE-HOLGER26-08",
+        attachments: [
+          { label: "Muzzle", value: "Edit attachment" },
+          { label: "Barrel", value: "Edit attachment" },
+          { label: "Stock", value: "Edit attachment" },
+          { label: "Ammunition", value: "Edit attachment" },
+          { label: "Rear Grip", value: "Edit attachment" }
+        ]
       },
       {
-        name: "AK117", category: "ar", classLabel: "Assault Rifle", image: "", thumb: "", code: "REBE-AK117-09",
-        attachments: ["Add your muzzle","Add your barrel","Add your laser","Add your magazine","Add your grip"]
+        name: "HSO405", category: "shotgun", classLabel: "Shotgun", image: "https://i.imgur.com/080VJRp.jpeg", thumb: "https://i.imgur.com/080VJRp.jpeg", code: "REBE-HSO405-09",
+        attachments: [
+          { label: "Muzzle", value: "Add your muzzle" },
+          { label: "Barrel", value: "Add your barrel" },
+          { label: "Laser", value: "Add your laser" },
+          { label: "Stock", value: "Add your stock" },
+          { label: "Perk", value: "Add your perk" }
+        ]
       },
       {
-        name: "XM4", category: "ar", classLabel: "Assault Rifle", image: "", thumb: "", code: "REBE-XM4-10",
-        attachments: ["Add your muzzle","Add your barrel","Add your laser","Add your magazine","Add your rear grip"]
+        name: "ISO HEMLOCK", category: "ar", classLabel: "Assault Rifle", image: "https://i.imgur.com/3q0Uuiu.jpeg", thumb: "https://i.imgur.com/3q0Uuiu.jpeg", code: "REBE-ISOHEMLOCK-10",
+        attachments: [
+          { label: "Muzzle", value: "Edit attachment" },
+          { label: "Barrel", value: "Edit attachment" },
+          { label: "Stock", value: "Edit attachment" },
+          { label: "Ammunition", value: "Edit attachment" },
+          { label: "Rear Grip", value: "Edit attachment" }
+        ]
       },
       {
-        name: "RAM-7", category: "ar", classLabel: "Assault Rifle", image: "", thumb: "", code: "REBE-RAM7-11",
-        attachments: ["Add your muzzle","Add your barrel","Add your stock","Add your magazine","Add your grip"]
+        name: "KRM262", category: "shotgun", classLabel: "Shotgun", image: "https://i.imgur.com/8zwbZna.jpeg", thumb: "https://i.imgur.com/8zwbZna.jpeg", code: "REBE-KRM262-11",
+        attachments: [
+          { label: "Laser", value: "MIP Laser 5mW" },
+          { label: "Barrel", value: "RTC Extended Light Barrel" },
+          { label: "Stock", value: "No Stock" },
+          { label: "Rear Grip", value: "Stippled Grip Tape" },
+          { label: "Perk", value: "Speed Up Kill" }
+        ]
       },
       {
-        name: "MADDOX", category: "ar", classLabel: "Assault Rifle", image: "", thumb: "", code: "REBE-MADDOX-12",
-        attachments: ["Add your barrel","Add your stock","Add your laser","Add your magazine","Add your grip"]
+        name: "LOCUS", category: "sniper", classLabel: "Sniper Rifle", image: "https://i.imgur.com/VkuifLj.jpeg", thumb: "https://i.imgur.com/VkuifLj.jpeg", code: "REBE-LOCUS-12",
+        attachments: [
+          { label: "Barrel", value: "YKM Lightweight Short" },
+          { label: "Stock", value: "OWC Skeleton Stock" },
+          { label: "Laser", value: "OWC Laser - Tactical" },
+          { label: "Ammunition", value: "Stopping Power Reload" },
+          { label: "Rear Grip", value: "Stippled Grip Tape" }
+        ]
       },
       {
-        name: "SWITCHBLADE X9", category: "smg", classLabel: "Submachine Gun", image: "", thumb: "", code: "REBE-SBX9-13",
-        attachments: ["Add your muzzle","Add your barrel","Add your stock","Add your magazine","Add your grip"]
+        name: "M13", category: "ar", classLabel: "Assault Rifle", image: "https://i.imgur.com/uWYcWI6.jpeg", thumb: "https://i.imgur.com/uWYcWI6.jpeg", code: "REBE-M13-13",
+        attachments: [
+          { label: "Barrel", value: "RTC Heavy Long Barrel" },
+          { label: "Laser", value: "OWC Laser - Tactical" },
+          { label: "Stock", value: "No Stock" },
+          { label: "Rear Grip", value: "Granulated Grip Tape" },
+          { label: "Ammunition", value: "Extended Mag B" }
+        ]
       },
       {
-        name: "STATIC HV", category: "smg", classLabel: "Submachine Gun", image: "", thumb: "", code: "REBE-STATIC-14",
-        attachments: ["Add your muzzle","Add your barrel","Add your laser","Add your magazine","Add your grip"]
+        name: "TUNDRA", category: "sniper", classLabel: "Sniper Rifle", image: "https://i.imgur.com/9vMG8GH.jpeg", thumb: "https://i.imgur.com/9vMG8GH.jpeg", code: "REBE-TUNDRA-14",
+        attachments: [
+          { label: "Muzzle", value: "Add your muzzle" },
+          { label: "Barrel", value: "Add your barrel" },
+          { label: "Stock", value: "Add your stock" },
+          { label: "Ammunition", value: "Add your ammunition" },
+          { label: "Rear Grip", value: "Add your grip" }
+        ]
       },
       {
-        name: "BP50", category: "ar", classLabel: "Assault Rifle", image: "", thumb: "", code: "REBE-BP50-15",
-        attachments: ["Add your muzzle","Add your barrel","Add your stock","Add your magazine","Add your grip"]
+        name: "GRAU 5.56", category: "ar", classLabel: "Assault Rifle", image: "https://i.imgur.com/6sWxkES.jpeg", thumb: "https://i.imgur.com/6sWxkES.jpeg", code: "REBE-GRAU-15",
+        attachments: [
+          { label: "Barrel", value: "Tempus 26.4 Archangel" },
+          { label: "Stock", value: "Cronen Sniper Elite" },
+          { label: "Laser", value: "OWC Laser - Tactical" },
+          { label: "Ammunition", value: "50 Round Mags" },
+          { label: "Rear Grip", value: "Granulated Grip Tape" }
+        ]
       },
       {
-        name: "ODEN", category: "ar", classLabel: "Assault Rifle", image: "", thumb: "", code: "REBE-ODEN-16",
-        attachments: ["Add your muzzle","Add your barrel","Add your laser","Add your magazine","Add your grip"]
+        name: "USS9", category: "smg", classLabel: "Submachine Gun", image: "https://i.imgur.com/jlhAuWh.jpeg", thumb: "https://i.imgur.com/jlhAuWh.jpeg", code: "REBE-USS9-16",
+        attachments: [
+          { label: "Muzzle", value: "Edit attachment" },
+          { label: "Barrel", value: "Edit attachment" },
+          { label: "Stock", value: "Edit attachment" },
+          { label: "Ammunition", value: "Edit attachment" },
+          { label: "Rear Grip", value: "Edit attachment" }
+        ]
       },
       {
-        name: "LW3-TUNDRA", category: "sniper", classLabel: "Sniper Rifle", image: "", thumb: "", code: "REBE-TUNDRA-17",
-        attachments: ["Add your muzzle","Add your barrel","Add your stock","Add your ammunition","Add your grip"]
+        name: "VMP", category: "smg", classLabel: "Submachine Gun", image: "https://i.imgur.com/abH0rUC.jpeg", thumb: "https://i.imgur.com/abH0rUC.jpeg", code: "REBE-VMP-17",
+        attachments: [
+          { label: "Muzzle", value: "Edit attachment" },
+          { label: "Barrel", value: "Edit attachment" },
+          { label: "Stock", value: "Edit attachment" },
+          { label: "Ammunition", value: "Edit attachment" },
+          { label: "Rear Grip", value: "Edit attachment" }
+        ]
       },
       {
-        name: "OUTLAW", category: "sniper", classLabel: "Sniper Rifle", image: "", thumb: "", code: "REBE-OUTLAW-18",
-        attachments: ["Add your barrel","Add your stock","Add your laser","Add your ammunition","Add your grip"]
+        name: "QXR", category: "smg", classLabel: "Submachine Gun", image: "https://i.imgur.com/279TlgX.jpeg", thumb: "https://i.imgur.com/279TlgX.jpeg", code: "REBE-QXR-18",
+        attachments: [
+          { label: "Muzzle", value: "Edit attachment" },
+          { label: "Barrel", value: "Edit attachment" },
+          { label: "Stock", value: "Edit attachment" },
+          { label: "Ammunition", value: "Edit attachment" },
+          { label: "Rear Grip", value: "Edit attachment" }
+        ]
       },
       {
-        name: "HS0405", category: "shotgun", classLabel: "Shotgun", image: "", thumb: "", code: "REBE-HS0405-19",
-        attachments: ["Add your muzzle","Add your barrel","Add your laser","Add your stock","Add your perk"]
+        name: "SWITCHBLADE", category: "smg", classLabel: "Submachine Gun", image: "https://i.imgur.com/VL4XzpQ.jpeg", thumb: "https://i.imgur.com/VL4XzpQ.jpeg", code: "REBE-SWITCHBLADE-19",
+        attachments: [
+          { label: "Muzzle", value: "Edit attachment" },
+          { label: "Barrel", value: "Edit attachment" },
+          { label: "Stock", value: "Edit attachment" },
+          { label: "Ammunition", value: "Edit attachment" },
+          { label: "Rear Grip", value: "Edit attachment" }
+        ]
       },
       {
         name: "RPD", category: "lmg", classLabel: "Light Machine Gun", image: "", thumb: "", code: "REBE-RPD-20",
