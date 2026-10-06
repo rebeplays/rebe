@@ -184,9 +184,12 @@
 
     .monogram{
       position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-      font-family:Rajdhani,sans-serif;font-size:clamp(8rem,17vw,16rem);font-weight:700;letter-spacing:-.12em;
-      color:transparent;background:linear-gradient(135deg,#fff,#4a4a50 45%,#d9d9dd 75%,#6b6b72);-webkit-background-clip:text;background-clip:text;
-      filter:drop-shadow(0 20px 60px rgba(255,255,255,.09));user-select:none;
+      width:min(62%,430px);display:grid;place-items:center;user-select:none;
+      filter:drop-shadow(0 20px 60px rgba(255,255,255,.09));
+    }
+    .monogram img{
+      display:block;width:100%;height:auto;object-fit:contain;
+      filter:drop-shadow(0 16px 34px rgba(255,255,255,.12));
     }
     .hero-art-label{position:absolute;left:28px;right:28px;bottom:28px;display:flex;align-items:end;justify-content:space-between;gap:20px}
     .hero-art-label .small{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:#6f6f76;line-height:1.8}
@@ -625,7 +628,7 @@
           <div class="orbit o1"></div>
           <div class="orbit o2"></div>
           <div class="orbit o3"></div>
-          <div class="monogram">RB</div>
+          <div class="monogram"><img src="https://i.imgur.com/07mFrSh.jpeg" alt="REBE logo" referrerpolicy="no-referrer" decoding="async" /></div>
           <div class="hero-art-label">
             <div class="small">encrypted build archive<br>black / silver system</div>
             <div class="serial">REBE//01</div>
@@ -968,13 +971,13 @@
         ]
       },
       {
-        name: "RPD", category: "lmg", classLabel: "Light Machine Gun", image: "", thumb: "", code: "REBE-RPD-20",
+        name: "TYPE63", category: "sniper", classLabel: "Sniper Rifle", image: "https://i.imgur.com/vj4v0cH.jpeg", thumb: "https://i.imgur.com/vj4v0cH.jpeg", code: "REBE-TYPE63-20",
         attachments: [
-          { label: "Muzzle", value: "Add your muzzle" },
-          { label: "Barrel", value: "Add your barrel" },
-          { label: "Stock", value: "Add your stock" },
-          { label: "Laser", value: "Add your laser" },
-          { label: "Rear Grip", value: "Add your grip" }
+          { label: "Muzzle", value: "Edit attachment" },
+          { label: "Barrel", value: "Edit attachment" },
+          { label: "Stock", value: "Edit attachment" },
+          { label: "Ammunition", value: "Edit attachment" },
+          { label: "Rear Grip", value: "Edit attachment" }
         ]
       }
     ];
